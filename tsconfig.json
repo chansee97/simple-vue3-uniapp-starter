@@ -1,0 +1,42 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "lib": ["esnext", "dom"],
+    "baseUrl": ".",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "resolveJsonModule": true,
+    "types": [
+      "@types/node",
+      "./src/types",
+      // uni-app + Vue 3 使用 Vite 构建，需要安装 vite
+      "vite/client",
+      // uni API 相关的 TypeScript 类型
+      "@dcloudio/types",
+      // wot-design-uni Volar插件支持
+      "wot-design-uni/global",
+      // 为 uni-app 组件提供 TypeScript 类型
+      "@uni-helper/uni-app-types"
+    ],
+    "allowJs": true,
+    "noImplicitThis": true,
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true
+  },
+  "vueCompilerOptions": {
+    // 调整 Volar（Vue 语言服务工具）解析行为，用于为 uni-app 组件提供 TypeScript 类型
+    "plugins": [
+      "@uni-helper/uni-app-types/volar-plugin"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+  // "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+}

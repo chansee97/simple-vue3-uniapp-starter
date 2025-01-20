@@ -1,0 +1,41 @@
+{
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^wd-(.*)": "wot-design-uni/components/wd-$1/wd-$1.vue"
+    }
+  },
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "type": "home",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "首页"
+      }
+    },
+    {
+      "path": "pages/login/index"
+    },
+    {
+      "path": "pages/foo/foo",
+      "type": "page",
+      "style": {
+        "navigationBarTitleText": "测试请求"
+      }
+    },
+    {
+      "path": "pages/foo/bar",
+      "type": "page",
+      "style": {
+        "navigationBarTitleText": "用户页"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-unocss-starter",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  }
+}
