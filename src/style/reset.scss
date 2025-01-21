@@ -1,0 +1,39 @@
+view {
+    font-size: 28rpx;
+    line-height: 2em;
+    font-family: -apple-system-font, Helvetica Neue, sans-serif;
+    /* 会对样式造成非常大的影响 */
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+}
+ 
+ 
+button,
+button:after,
+button:before {
+    border-radius: 0;
+    border: 0;
+    position: relative;
+}
+ 
+image,
+video,
+progress,
+textarea,
+input {
+    width: 100%;
+}
+ 
+/* 隐藏滚动条 */
+::-webkit-scrollbar {
+    display: none !important;
+}
+ 
+ 
+/* button禁用样式 */
+button[disabled] {
+    color: #fff !important;
+    background: #cdcdcd !important;
+    border: transparent !important;
+    cursor: not-allowed !important;
+}

@@ -4,9 +4,12 @@ const loginRoute = '/pages/login/index'
 
 // 不需要登录的白名单路由
 const whiteList = [
-  loginRoute,
-  '/pages/index/index',
-  '/pages/foo/foo',
+  loginRoute, // 登录页
+  '/pages/login/username', // 账号登录页
+  '/pages/login/privacy', // 隐私协议
+  '/pages/login/protocol', // 用户协议
+  '/pages/index/index', // 首页
+  '/pages/foo/foo', // demo页，可删除
 ]
 
 function isLogined() {

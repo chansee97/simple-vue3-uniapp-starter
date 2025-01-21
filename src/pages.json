@@ -15,7 +15,28 @@
       }
     },
     {
-      "path": "pages/login/index"
+      "path": "pages/login/index",
+      "style": {
+        "navigationBarTitleText": "登录"
+      }
+    },
+    {
+      "path": "pages/login/username",
+      "style": {
+        "navigationBarTitleText": "账号登录"
+      }
+    },
+    {
+      "path": "pages/login/privacy",
+      "style": {
+        "navigationBarTitleText": "详情"
+      }
+    },
+    {
+      "path": "pages/login/protocol",
+      "style": {
+        "navigationBarTitleText": "详情"
+      }
     },
     {
       "path": "pages/foo/foo",

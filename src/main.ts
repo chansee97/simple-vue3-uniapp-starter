@@ -2,6 +2,7 @@ import { createSSRApp } from 'vue'
 import App from './App.vue'
 import pinia from './store'
 import { routeInterceptor } from './utils/routeInterceptor'
+import '@/style/index.scss'
 
 import 'uno.css'
 

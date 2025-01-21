@@ -15,7 +15,6 @@ function toLogin() {
 
 <template>
   <view class="min-h-100vh flex flex-col items-center justify-center gap-10rpx">
-    <image class="h-200rpx w-200rpx" src="/static/logo.png" />
     <div class="text-50rpx">
       {{ foo }}
     </div>
