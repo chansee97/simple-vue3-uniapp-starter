@@ -30,12 +30,15 @@ const navigateToInterceptor = {
     if (hasLogin) {
       return true
     }
+
+    // 未登录，提示错误信息
     uni.showToast({
-      icon: 'error',
       title: '请先登录后访问页面',
     })
+    // 跳转到登录页
     const redirectRoute = `${loginRoute}?redirect=${encodeURIComponent(url)}`
     uni.navigateTo({ url: redirectRoute })
+
     return false
   },
 }
