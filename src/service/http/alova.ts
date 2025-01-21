@@ -27,6 +27,12 @@ export function createAlovaInstance(config: Config) {
       const userStore = useUserStore()
       const { token } = userStore.userInfo
       method.config.headers.Authorization = `Bearer ${token}`
+
+      // 请求显示loading
+      uni.showLoading({
+        title: '数据请求中',
+        mask: true,
+      })
     },
     responded: {
       onSuccess: async (response, _method) => {
@@ -58,6 +64,7 @@ export function createAlovaInstance(config: Config) {
       },
       onComplete: async (_method) => {
         // 处理请求完成逻辑
+        uni.hideLoading()
       },
     },
   })
