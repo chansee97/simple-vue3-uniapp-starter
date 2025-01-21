@@ -80,6 +80,7 @@ export default defineManifestConfig({
       urlCheck: false,
     },
     usingComponents: true,
+    lazyCodeLoading: 'requiredComponents',
   },
   'mp-alipay': {
     usingComponents: true,

@@ -34,6 +34,7 @@ const navigateToInterceptor = {
     // 未登录，提示错误信息
     uni.showToast({
       title: '请先登录后访问页面',
+      icon: 'none',
     })
     // 跳转到登录页
     const redirectRoute = `${loginRoute}?redirect=${encodeURIComponent(url)}`

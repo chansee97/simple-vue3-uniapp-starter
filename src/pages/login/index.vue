@@ -59,7 +59,7 @@ function loginByUserName() {
           用户名登录
         </wd-button>
       </view>
-      <view class="mt-80rpx flex justify-center">
+      <view class="mt-80rpx flex flex-wrap justify-center">
         <wd-checkbox v-model="isAgree" />
         我已阅读并同意
         <wd-text type="primary" text="《隐私政策》" @click="toPrivacy" />、
