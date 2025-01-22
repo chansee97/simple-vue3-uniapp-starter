@@ -37,6 +37,8 @@ export function createAlovaInstance(config: Config) {
     responded: {
       onSuccess: async (response, _method) => {
         const { statusCode, data } = response as UniNamespace.RequestSuccessCallbackResult
+        const userStore = useUserStore()
+
         if (statusCode >= 500) {
           uni.showToast({
             icon: 'none',
@@ -49,8 +51,8 @@ export function createAlovaInstance(config: Config) {
             icon: 'none',
             title: '登录过期，请重新登录',
           })
-          // userStore.clearUserInfo()
-          // uni.navigateTo({ url: '/pages/login/login' })
+          userStore.clearUserInfo()
+          uni.navigateTo({ url: '/pages/login/login' })
         }
         return data || null
       },

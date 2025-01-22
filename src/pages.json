@@ -18,20 +18,16 @@
     "spacing": "3px",
     "list": [
       {
-        "pagePath": "pages/index/index",
-        "text": "首页"
+        "pagePath": "pages/index/index"
       },
       {
-        "pagePath": "pages/order/index",
-        "text": "订单"
+        "pagePath": "pages/order/index"
       },
       {
-        "pagePath": "pages/message/index",
-        "text": "消息"
+        "pagePath": "pages/message/index"
       },
       {
-        "pagePath": "pages/user/index",
-        "text": "我的"
+        "pagePath": "pages/user/index"
       }
     ]
   },

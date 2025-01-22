@@ -1,24 +1,25 @@
 <script setup lang="ts">
 import { fetchFormPost, fetchGet, fetchPost, fetchServerError } from '@/service/api/foo'
 
+const code = ref()
 function testGet() {
   fetchGet().then((res) => {
-    console.warn(res)
+    code.value = res
   })
 }
 function testPost() {
   fetchPost({ data: 111 }).then((res) => {
-    console.warn(res)
+    code.value = res
   })
 }
 function testFormPost() {
   fetchFormPost({ data: 111 }).then((res) => {
-    console.warn(res)
+    code.value = res
   })
 }
 function testServerError() {
   fetchServerError({ data: 111 }).then((res) => {
-    console.warn(res)
+    code.value = res
   })
 }
 </script>
@@ -37,5 +38,6 @@ function testServerError() {
     <wd-button type="error" @click="testServerError">
       服务器错误
     </wd-button>
+    <pre>{{ code }}</pre>
   </view>
 </template>

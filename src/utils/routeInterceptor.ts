@@ -9,7 +9,6 @@ const whiteList = [
   '/pages/login/privacy', // 隐私协议
   '/pages/login/protocol', // 用户协议
   '/pages/index/index', // 首页
-  '/pages/foo/foo', // demo页，可删除
 ]
 
 function isLogined() {
@@ -31,12 +30,7 @@ const navigateToInterceptor = {
       return true
     }
 
-    // 未登录，提示错误信息
-    uni.showToast({
-      title: '请先登录后访问页面',
-      icon: 'none',
-    })
-    // 跳转到登录页
+    // 未登录，跳转到登录页
     const redirectRoute = `${loginRoute}?redirect=${encodeURIComponent(url)}`
     uni.navigateTo({ url: redirectRoute })
 
