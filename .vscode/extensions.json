@@ -1,9 +1,13 @@
 {
   "recommendations": [
-    "vue.volar",
-    "esbenp.prettier-vscode",
-    "dbaeumer.vscode-eslint",
+    "antfu.vite",
+    "antfu.iconify",
     "antfu.unocss",
-    "streetsidesoftware.code-spell-checker"
+    "vue.volar",
+    "dbaeumer.vscode-eslint",
+    "editorConfig.editorConfig",
+    "uni-helper.uni-helper-vscode",
+    "alova.alova-vscode-extension",
+    "wot-ui.wot-ui-intellisense"
   ]
 }

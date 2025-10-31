@@ -1,29 +1,12 @@
-import path from 'node:path'
 import { defineManifestConfig } from '@uni-helper/vite-plugin-uni-manifest'
-import { loadEnv } from 'vite'
-
-// 获取环境变量的范例
-const env = loadEnv(process.env.NODE_ENV!, path.resolve(process.cwd(), 'env'))
-
-const {
-  VITE_APP_TITLE,
-  VITE_UNI_APPID,
-  VITE_WX_APPID,
-  VITE_APP_PUBLIC_BASE,
-} = env
 
 export default defineManifestConfig({
-  'name': VITE_APP_TITLE,
-  'appid': VITE_UNI_APPID,
-  'description': 'uni-helper description',
-  'versionName': '1.0.1',
+  'name': 'starter',
+  'appid': '__UNI__1208592',
+  'description': '',
+  'versionName': '1.0.0',
   'versionCode': '100',
   'transformPx': false,
-  'h5': {
-    router: {
-      base: VITE_APP_PUBLIC_BASE,
-    },
-  },
   /* 5+App特有相关 */
   'app-plus': {
     usingComponents: true,
@@ -63,33 +46,39 @@ export default defineManifestConfig({
       ios: {},
       /* SDK配置 */
       sdkConfigs: {},
-      /* 图标配置 */
-      icons: {
-        android: {},
-        ios: {},
-      },
     },
   },
   /* 快应用特有相关 */
   'quickapp': {},
   /* 小程序特有相关 */
   'mp-weixin': {
-    appid: VITE_WX_APPID,
-    libVersion: '2.14.0',
+    optimization: {
+      subPackages: true,
+    },
+    appid: '',
     setting: {
       urlCheck: false,
     },
     usingComponents: true,
-    lazyCodeLoading: 'requiredComponents',
+    darkmode: true,
+    themeLocation: 'theme.json',
   },
   'mp-alipay': {
     usingComponents: true,
+    compileOptions: {
+      globalObjectMode: 'enable',
+      treeShaking: true,
+    },
   },
   'mp-baidu': {
     usingComponents: true,
   },
   'mp-toutiao': {
     usingComponents: true,
+  },
+  'h5': {
+    darkmode: true,
+    themeLocation: 'theme.json',
   },
   'uniStatistics': {
     enable: false,

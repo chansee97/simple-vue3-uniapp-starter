@@ -1,46 +1,88 @@
-import { resolve } from 'node:path'
-import { defineConfig, loadEnv } from 'vite'
-import createVitePlugins from './build/plugins'
-import { createViteProxy } from './build/proxy'
-import { serviceConfig } from './service.config'
-
+import process from 'node:process'
+import { defineConfig } from 'vite'
+import Uni from '@dcloudio/vite-plugin-uni'
+import UniHelperManifest from '@uni-helper/vite-plugin-uni-manifest'
+import UniHelperPages from '@uni-helper/vite-plugin-uni-pages'
+import UniHelperLayouts from '@uni-helper/vite-plugin-uni-layouts'
+import UniHelperComponents from '@uni-helper/vite-plugin-uni-components'
+import AutoImport from 'unplugin-auto-import/vite'
+import { WotResolver } from '@uni-helper/vite-plugin-uni-components/resolvers'
+import UniKuRoot from '@uni-ku/root'
+import { UniEchartsResolver } from 'uni-echarts/resolver'
+import { UniEcharts } from 'uni-echarts/vite'
+import Optimization from '@uni-ku/bundle-optimizer'
 // https://vitejs.dev/config/
-export default async ({ mode }: { mode: ServiceEnvType }) => {
-  const env = loadEnv(mode, resolve(__dirname, 'env'), '')
-
-  const envConfig = serviceConfig[mode]
-
-  const { UNI_PLATFORM } = process.env
+export default async () => {
+  const UnoCSS = (await import('unocss/vite')).default
 
   return defineConfig({
-    envDir: './env', // 自定义env目录
-    plugins: await createVitePlugins(),
-    resolve: {
-      alias: {
-        '@': resolve(__dirname, 'src'),
-      },
+    optimizeDeps: {
+      exclude: process.env.NODE_ENV === 'development' ? ['wot-design-uni', 'uni-echarts'] : [],
     },
-    server: {
-      host: '0.0.0.0',
-      hmr: true,
-      proxy:
-        (env.VITE_HTTP_PROXY === 'Y' && UNI_PLATFORM === 'h5') ? createViteProxy(envConfig) : undefined,
-    },
-    build: {
-      // 非开发环境时，关闭sourcemap
-      sourcemap: mode === 'development',
-      target: 'es6',
-      // 开发环境不用压缩
-      minify: mode === 'development' ? false : 'terser',
-      terserOptions: {
-        compress: {
-          drop_console: false,
-          drop_debugger: true,
+    plugins: [
+      // https://github.com/uni-helper/vite-plugin-uni-manifest
+      UniHelperManifest(),
+      // https://github.com/uni-helper/vite-plugin-uni-pages
+      UniHelperPages({
+        dts: 'src/types/uni-pages.d.ts',
+        subPackages: [
+          'src/subPages',
+          'src/subEcharts',
+          'src/subAsyncEcharts',
+        ],
+        /**
+         * 排除的页面，相对于 dir 和 subPackages
+         * @default []
+         */
+        exclude: ['**/components/**/*.*'],
+      }),
+      // https://github.com/uni-helper/vite-plugin-uni-layouts
+      UniHelperLayouts(),
+      // https://github.com/uni-helper/vite-plugin-uni-components
+      UniHelperComponents({
+        resolvers: [WotResolver(), UniEchartsResolver()],
+        dts: 'src/types/components.d.ts',
+        dirs: ['src/components', 'src/business'],
+        directoryAsNamespace: true,
+      }),
+      // https://github.com/uni-ku/root
+      UniKuRoot(),
+      // https://uni-echarts.xiaohe.ink
+      UniEcharts(),
+      Uni(),
+      // https://github.com/uni-ku/bundle-optimizer
+      Optimization({
+        dts: {
+          'async-import': {
+            name: 'async-import.d.ts',
+            path: 'src/types/async-import.d.ts',
+          },
+          'async-component': {
+            name: 'async-component.d.ts',
+            path: 'src/types/async-component.d.ts',
+          },
         },
-      },
-    },
-    define: {
-      __UNI_PLATFORM__: JSON.stringify(UNI_PLATFORM),
-    },
+        logger: true,
+      }),
+      // https://github.com/antfu/unplugin-auto-import
+      AutoImport({
+        imports: ['vue', '@vueuse/core', 'pinia', 'uni-app', {
+          from: 'uni-mini-router',
+          imports: ['createRouter', 'useRouter', 'useRoute'],
+        }, {
+          from: 'wot-design-uni',
+          imports: ['useToast', 'useMessage', 'useNotify', 'CommonUtil'],
+        }, {
+          from: 'alova/client',
+          imports: ['usePagination', 'useRequest'],
+        }],
+        dts: 'src/types/auto-imports.d.ts',
+        dirs: ['src/composables', 'src/store', 'src/utils', 'src/api'],
+        vueTemplate: true,
+      }),
+      // https://github.com/antfu/unocss
+      // see unocss.config.ts for config
+      UnoCSS(),
+    ],
   })
 }

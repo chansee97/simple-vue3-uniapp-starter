@@ -1,10 +1,15 @@
 <script setup lang="ts">
-import Tabbar from '@/components/Tabbar.vue'
+definePage({
+  name: 'message',
+  layout: 'tabbar',
+  style: {
+    navigationBarTitleText: '消息',
+  },
+})
 </script>
 
 <template>
   <view>
     消息
   </view>
-  <Tabbar name="message" />
 </template>

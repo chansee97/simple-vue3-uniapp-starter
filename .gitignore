@@ -1,14 +1,16 @@
-.DS_Store
-node_modules/
-dist/
+# Logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-**/*.log
+pnpm-debug.log*
+lerna-debug.log*
 
-tests/**/coverage/
-tests/e2e/reports
-selenium-debug.log
+node_modules
+.DS_Store
+dist
+*.local
 
 # Editor directories and files
 .idea
@@ -16,10 +18,10 @@ selenium-debug.log
 *.ntvs*
 *.njsproj
 *.sln
-*.local
+*.sw?
 
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-
+async-component.d.ts
+async-import.d.ts
 auto-imports.d.ts
+components.d.ts
+uni-pages.d.ts

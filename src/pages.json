@@ -1,21 +1,168 @@
 {
-  "globalStyle": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "simple-uni-vue3-starter",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
-  },
-  "easycom": {
-    "autoscan": true,
-    "custom": {
-      "^wd-(.*)": "wot-design-uni/components/wd-$1/wd-$1.vue"
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "type": "home",
+      "name": "home",
+      "layout": "tabbar",
+      "style": {
+        "navigationBarTitleText": "首页"
+      }
+    },
+    {
+      "path": "pages/message/index",
+      "type": "page",
+      "name": "message",
+      "layout": "tabbar",
+      "style": {
+        "navigationBarTitleText": "消息"
+      }
+    },
+    {
+      "path": "pages/order/index",
+      "type": "page",
+      "name": "order",
+      "layout": "tabbar",
+      "style": {
+        "navigationBarTitleText": "订单"
+      }
+    },
+    {
+      "path": "pages/user/index",
+      "type": "page",
+      "name": "user",
+      "layout": "tabbar",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
+    },
+    {
+      "path": "pages/demo/feedback/index",
+      "type": "page",
+      "name": "feedback",
+      "style": {
+        "navigationBarTitleText": "全局反馈"
+      }
+    },
+    {
+      "path": "pages/demo/icon/index",
+      "type": "page",
+      "name": "icon",
+      "style": {
+        "navigationBarTitleText": "图标演示"
+      }
+    },
+    {
+      "path": "pages/demo/pinia/index",
+      "type": "page",
+      "name": "pinia",
+      "style": {
+        "navigationBarTitleText": "Pinia 演示"
+      }
+    },
+    {
+      "path": "pages/demo/request/index",
+      "type": "page",
+      "name": "request",
+      "style": {
+        "navigationBarTitleText": "网络请求"
+      }
+    },
+    {
+      "path": "pages/demo/router/demo-aftereach",
+      "type": "page",
+      "name": "demo-aftereach",
+      "style": {
+        "navigationBarTitleText": "afterEach 钩子演示"
+      }
+    },
+    {
+      "path": "pages/demo/router/demo-guard",
+      "type": "page",
+      "name": "demo-guard",
+      "style": {
+        "navigationBarTitleText": "导航守卫演示"
+      }
+    },
+    {
+      "path": "pages/demo/router/demo-object",
+      "type": "page",
+      "name": "demo-object",
+      "style": {
+        "navigationBarTitleText": "对象路径跳转"
+      }
+    },
+    {
+      "path": "pages/demo/router/demo-params",
+      "type": "page",
+      "name": "demo-params",
+      "style": {
+        "navigationBarTitleText": "参数接收演示"
+      }
+    },
+    {
+      "path": "pages/demo/router/demo-protected",
+      "type": "page",
+      "name": "demo-protected",
+      "style": {
+        "navigationBarTitleText": "受保护页面"
+      }
+    },
+    {
+      "path": "pages/demo/router/demo-query",
+      "type": "page",
+      "name": "demo-query",
+      "style": {
+        "navigationBarTitleText": "查询参数接收演示"
+      }
+    },
+    {
+      "path": "pages/demo/router/demo-string",
+      "type": "page",
+      "name": "demo-string",
+      "style": {
+        "navigationBarTitleText": "字符串路径跳转"
+      }
+    },
+    {
+      "path": "pages/demo/router/index",
+      "type": "page",
+      "name": "router",
+      "style": {
+        "navigationBarTitleText": "路由管理"
+      }
+    },
+    {
+      "path": "pages/demo/uni-ku-root/index",
+      "type": "page",
+      "name": "root",
+      "style": {
+        "navigationBarTitleText": "uni-ku/root"
+      }
     }
+  ],
+  "globalStyle": {
+    "navigationBarBackgroundColor": "@navBgColor",
+    "navigationBarTextStyle": "@navTxtStyle",
+    "navigationBarTitleText": "Starter",
+    "backgroundColor": "@bgColor",
+    "backgroundTextStyle": "@bgTxtStyle",
+    "backgroundColorTop": "@bgColorTop",
+    "backgroundColorBottom": "@bgColorBottom",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 50,
+    "animationType": "pop-in",
+    "animationDuration": 300
   },
   "tabBar": {
-    "height": "0px",
-    "fontSize": "0px",
-    "iconWidth": "0px",
-    "spacing": "3px",
+    "custom": true,
+    "customize": true,
+    "overlay": true,
+    "height": "0",
+    "color": "@tabColor",
+    "selectedColor": "@tabSelectedColor",
+    "backgroundColor": "@tabBgColor",
+    "borderStyle": "@tabBorderStyle",
     "list": [
       {
         "pagePath": "pages/index/index"
@@ -31,61 +178,28 @@
       }
     ]
   },
-  "pages": [
+  "subPackages": [
     {
-      "path": "pages/index/index",
-      "style": {
-        "navigationBarTitleText": "首页"
-      }
+      "root": "subEcharts",
+      "pages": [
+        {
+          "path": "index",
+          "type": "page"
+        }
+      ]
     },
     {
-      "path": "pages/order/index",
-      "style": {
-        "navigationBarTitleText": "订单"
-      }
-    },
-    {
-      "path": "pages/message/index",
-      "style": {
-        "navigationBarTitleText": "消息"
-      }
-    },
-    {
-      "path": "pages/user/index",
-      "style": {
-        "navigationBarTitleText": "我的"
-      }
-    },
-    {
-      "path": "pages/login/index",
-      "style": {
-        "navigationBarTitleText": "登录"
-      }
-    },
-    {
-      "path": "pages/login/username",
-      "style": {
-        "navigationBarTitleText": "账号登录"
-      }
-    },
-    {
-      "path": "pages/login/privacy",
-      "style": {
-        "navigationBarTitleText": "详情"
-      }
-    },
-    {
-      "path": "pages/login/protocol",
-      "style": {
-        "navigationBarTitleText": "详情"
-      }
-    },
-    {
-      "path": "pages/foo/foo",
-      "type": "page",
-      "style": {
-        "navigationBarTitleText": "测试请求"
-      }
+      "root": "subAsyncEcharts",
+      "pages": [
+        {
+          "path": "index",
+          "type": "page",
+          "name": "echartsAsync",
+          "style": {
+            "navigationBarTitleText": "echarts 异步跨包示例"
+          }
+        }
+      ]
     }
   ]
 }
